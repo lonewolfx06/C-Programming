@@ -1,0 +1,101 @@
+<!-- post-1.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>How I built a realtime code playground — Anmol</title>
+  <meta name="description" content="Walkthrough of a minimal realtime code playground: iframe sandbox, IndexedDB persistence, and UI considerations." />
+  <link rel="canonical" href="https://example.com/post-1.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="site">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Anmol homepage">
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0b6cff"/></svg>
+        <span class="brand-name">Anmol</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="resume.html">Resume</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger-4" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="post">
+      <header class="post-header reveal">
+        <h1>How I built a realtime code playground (and why)</h1>
+        <p class="meta">Oct 6, 2025 • <span class="tag">web</span> <span class="tag">projects</span></p>
+      </header>
+
+      <section class="post-content reveal">
+        <p>Goal: fast iteration loop for front-end experiments without a server. Keep it secure and persistent.</p>
+
+        <h2>Sandboxing the preview</h2>
+        <p>Use a sandboxed iframe with a strict sandbox attribute and a limited postMessage API for communication.</p>
+
+        <pre><code class="language-js">
+// parent -> iframe example
+const iframe = document.createElement('iframe');
+iframe.sandbox = 'allow-scripts';
+iframe.srcdoc = `<!doctype html><html><body><div id="root"></div>
+<script>
+  window.addEventListener('message', (e) => {
+    try {
+      // only accept stringified code
+      const code = e.data && e.data.type === 'run' ? e.data.code : null;
+      if (code) { eval(code); }
+    } catch (err) { console.error(err); }
+  }, false);
+</script>
+</body></html>`;
+document.body.appendChild(iframe);
+
+// send code to iframe
+iframe.contentWindow.postMessage({type:'run', code: 'document.body.style.background=\"#f0f0f0\";' }, '*');
+        </code></pre>
+
+        <h2>Persistence with IndexedDB</h2>
+        <p>IndexedDB provides persistent storage across sessions without server dependencies. Keep the API small and predictable.</p>
+
+        <pre><code class="language-js">
+function saveSnippet(dbName, key, value) {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(dbName, 1);
+    req.onupgradeneeded = () => req.result.createObjectStore('snippets');
+    req.onsuccess = () => {
+      const tx = req.result.transaction('snippets', 'readwrite');
+      tx.objectStore('snippets').put(value, key);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    };
+    req.onerror = () => reject(req.error);
+  });
+}
+        </code></pre>
+
+        <h2>Conclusion</h2>
+        <p>Keep the playground small, secure by default, and focused on speed. Persist state locally — users appreciate instant recovery.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year-4"></span> Anmol</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!-- blog.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Blog — Anmol</title>
+  <meta name="description" content="Blog — project walkthroughs and engineering notes from Anmol." />
+  <link rel="canonical" href="https://example.com/blog.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="site">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Anmol homepage">
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0b6cff"/></svg>
+        <span class="brand-name">Anmol</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html" aria-current="page">Blog</a></li>
+          <li><a href="resume.html">Resume</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger-3" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="section">
+      <h1 class="section-title reveal">Blog</h1>
+      <p class="lead reveal">Project walkthroughs, engineering decisions, and practical notes — focused on coding projects and reproducible workflows.</p>
+
+      <div class="post-list">
+        <article class="post-card reveal">
+          <h2><a href="post-1.html">How I built a realtime code playground (and why)</a></h2>
+          <p class="meta">Oct 6, 2025 • <span class="tag">web</span> <span class="tag">projects</span></p>
+          <p class="excerpt">A technical walkthrough of building a sandboxed, persistent playground in the browser. Includes snippet for safe iframe communication and saving with IndexedDB.</p>
+          <a class="read-more" href="post-1.html">Read →</a>
+        </article>
+
+        <article class="post-card reveal">
+          <h2><a href="post-2.html">Small, interpretable ML pipelines for prototyping</a></h2>
+          <p class="meta">Sep 12, 2025 • <span class="tag">ml</span></p>
+          <p class="excerpt">Design patterns for quick iteration, experiments tracking, and packaging small models for sharing.</p>
+          <a class="read-more" href="post-2.html">Read →</a>
+        </article>
+
+        <article class="post-card reveal">
+          <h2><a href="post-3.html">Automating performance checks for frontend</a></h2>
+          <p class="meta">Aug 22, 2025 • <span class="tag">performance</span></p>
+          <p class="excerpt">A compact guide to integrating Lighthouse into CI and visualizing regressions across builds.</p>
+          <a class="read-more" href="post-3.html">Read →</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year-3"></span> Anmol — Blog</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

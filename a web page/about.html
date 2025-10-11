@@ -1,0 +1,94 @@
+<!-- about.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Anmol</title>
+  <meta name="description" content="About Anmol — software engineer (CSE, AI/ML). Experience, skills, and focus areas." />
+  <link rel="canonical" href="https://example.com/about.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="site">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Anmol homepage">
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0b6cff"/></svg>
+        <span class="brand-name">Anmol</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="resume.html">Resume</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger-2" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="about-hero section">
+      <div class="about-grid reveal">
+        <div>
+          <h1>About — Anmol</h1>
+          <p class="lead">I am an engineering student specializing in AI/ML and a practitioner of full-stack web development. I enjoy turning prototypes into production-ready tooling with a focus on clarity, testing, and performance.</p>
+        </div>
+        <figure aria-hidden="false">
+          <img src="assets/photo-placeholder.jpg" alt="Portrait placeholder of Anmol">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title reveal">Experience & Focus</h2>
+      <ul class="bulleted">
+        <li class="reveal"><strong>Full-stack web & tooling</strong> — focused on developer UX, small single-developer products, and web performance audits.</li>
+        <li class="reveal"><strong>Machine learning</strong> — reproducible experiments, small-scale model prototyping, and explainability tooling.</li>
+        <li class="reveal"><strong>Engineering practices</strong> — testing, CI automation, lightweight packaging and reproducibility.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title reveal">Skills</h2>
+      <div class="skill-grid reveal">
+        <div class="skill">
+          <h3>Languages</h3>
+          <p>JavaScript, Python, SQL</p>
+        </div>
+        <div class="skill">
+          <h3>Frameworks & Tools</h3>
+          <p>Node, Express, React (light usage), NumPy, Pandas, Git, Lighthouse</p>
+        </div>
+        <div class="skill">
+          <h3>Practices</h3>
+          <p>Testing, CI/CD, Performance Monitoring, Reproducible ML</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title reveal">Education</h2>
+      <p class="reveal"><strong>B.Tech — Computer Science Engineering (AI/ML specialization)</strong><br>Institution — Expected graduation: 2026</p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title reveal">Contact</h2>
+      <p class="reveal">For project inquiries or collaborations, email: <a href="mailto:you@example.com">you@example.com</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year-2"></span> Anmol — Portfolio</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
