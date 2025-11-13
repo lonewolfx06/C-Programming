@@ -5,10 +5,16 @@ int main()
     int num;
     scanf("%d", &num);
     int sum=0;
-    while(num>0)
+    while(num>9)
     {
-        sum=sum+num%10;
-        num=num/10;
+        sum=0;
+        while(num!=0)
+        {
+            int digit=num%10;
+            sum=sum+digit;
+            num=num/10;
+        }
+        num=sum;
     }
     printf("Sum of digits: %d\n", sum);
 }
