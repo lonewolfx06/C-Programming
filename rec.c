@@ -15,6 +15,7 @@
 //     int fa=factorial(n);
 //     printf("factorial of the entered no is %d", fa);
 // }
+
 void main()
 {
     int n;
